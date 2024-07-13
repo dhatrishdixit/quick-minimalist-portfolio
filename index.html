@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhatrish Singh Dixit - Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #333;
+            --header-color: #2c3e50;
+            --project-bg: #ffffff;
+            --skill-bg: #e0e0e0;
+            --toggle-bg: #2c3e50;
+            --toggle-icon: #f0f0f0;
+        }
+
+        .dark-mode {
+            --bg-color: #2c3e50;
+            --text-color: #f0f0f0;
+            --header-color: #ecf0f1;
+            --project-bg: #34495e;
+            --skill-bg: #455a64;
+            --toggle-bg: #f0f0f0;
+            --toggle-icon: #2c3e50;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--header-color);
+        }
+
+        .contact-info {
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 10px;
+            color: var(--header-color);
+        }
+
+        .project {
+            margin-bottom: 20px;
+            cursor: pointer;
+            background-color: var(--project-bg);
+            padding: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .project h3 {
+            margin-bottom: 5px;
+            color: var(--header-color);
+        }
+
+        .project p {
+            margin-top: 0;
+        }
+
+        .project-details {
+            display: none;
+            padding: 10px;
+            background-color: var(--skill-bg);
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background-color: var(--skill-bg);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--header-color);
+            color: var(--bg-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: none;
+        }
+
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--toggle-bg);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .mode-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--toggle-icon);
+            transition: fill 0.3s;
+        }
+
+        .mode-toggle .moon {
+            display: none;
+        }
+
+        .dark-mode .mode-toggle .sun {
+            display: none;
+        }
+
+        .dark-mode .mode-toggle .moon {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button class="mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+        </svg>
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <header>
+        <h1>Dhatrish Singh Dixit</h1>
+        <div class="contact-info">
+            <p>Raipur, CG | 9660057922 | <a href="mailto:dhatrish.dev@gmail.com">Email</a> | <a href="https://linkedin.com/in/dhatrish-singh-dixit-6625821a7">LinkedIn</a> | <a href="https://github.com/dhatrishdixit">GitHub</a></p>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Developer with a passion for learning internet technologies. Currently pursuing a Bachelor of Technology in Electrical Engineering at National Institute of Technology Raipur, expected to graduate in 2025.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <span class="skill">JavaScript</span>
+            <span class="skill">TypeScript</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">C++</span>
+            <span class="skill">Docker</span>
+            <span class="skill">FFmpeg</span>
+            <span class="skill">React.js</span>
+            <span class="skill">Next.js</span>
+            <span class="skill">Express.js</span>
+            <span class="skill">MongoDB</span>
+            <span class="skill">MySQL</span>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project" onclick="toggleProject('clipSync')">
+            <h3>ClipSync</h3>
+            <p>Full-stack video sharing web application</p>
+            <div id="clipSync" class="project-details">
+                <p>Features include email verification, OTP password reset, and complex MongoDB aggregation pipelines. Built with React, TypeScript, Node.js, and Express.js.</p>
+                <p><a href="https://clipsync.in.net" target="_blank">Try it here</a> | <a href="https://youtu.be/6XUTMOIMhqM" target="_blank">View demo video</a></p>
+            </div>
+        </div>
+        <div class="project" onclick="toggleProject('ytvdownload')">
+            <h3>Ytvdownload</h3>
+            <p>CLI application for downloading YouTube videos</p>
+            <div id="ytvdownload" class="project-details">
+                <p>Published on npm with 300+ weekly downloads. Uses ffmpeg for high-quality video and audio processing.</p>
+                <p><a href="https://www.npmjs.com/package/ytvdownload" target="_blank">View on npm</a> | <a href="https://github.com/dhatrishdixit/singleVideoDownloaderYoutube" target="_blank">GitHub Repository</a></p>
+            </div>
+        </div>
+        <div class="project" onclick="toggleProject('streamDirect')">
+            <h3>StreamDirect</h3>
+            <p>Backend-heavy project for live video streaming</p>
+            <div id="streamDirect" class="project-details">
+                <p>Converts live video from client camera to binary, sends it to backend server using WebSocket protocol, then uses ffmpeg to encode and stream video content in real-time to YouTube RTMP server.</p>
+                <p><a href="https://github.com/dhatrishdixit/wsYoutubeStream" target="_blank">GitHub Repository</a></p>
+            </div>
+        </div>
+        <div class="project" onclick="toggleProject('blogify')">
+            <h3>Blogify</h3>
+            <p>Full-stack blog app</p>
+            <div id="blogify" class="project-details">
+                <p>Uses Appwrite for backend services and React for the frontend. Implements protected routes, complex component structure, and form management with react-hook-form.</p>
+                <p><a href="https://appwrite-blog-hazel.vercel.app" target="_blank">Try it here</a> | <a href="https://github.com/dhatrishdixit/appwriteBlog" target="_blank">GitHub Repository</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Dhatrish Singh Dixit. All rights reserved.</p>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        function toggleProject(id) {
+            const details = document.getElementById(id);
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+
+        const backToTopButton = document.getElementById('backToTop');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        const header = document.querySelector('h1');
+        const text = header.textContent;
+        header.textContent = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                header.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        typeWriter();
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>
